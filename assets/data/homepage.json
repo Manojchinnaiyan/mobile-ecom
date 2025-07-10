@@ -35,16 +35,27 @@
       "name": "Beauty",
       "imageUrl": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=100&h=100&fit=crop",
       "backgroundColor": "#F59E0B"
+    },
+    {
+      "id": "7",
+      "name": "Baby",
+      "imageUrl": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=100&h=100&fit=crop",
+      "backgroundColor": "#F472B6"
+    },
+    {
+      "id": "8",
+      "name": "Print",
+      "imageUrl": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=100&h=100&fit=crop",
+      "backgroundColor": "#A855F7"
     }
   ],
-
   "categoryBanners": [
     {
       "id": "1",
       "category": "All",
       "title": "MAXXsaver",
       "subtitle": "Shop for ₹399 & unlock lowest prices!",
-      "imageUrl": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=200&h=150&fit=crop",
+      "imageUrl": "https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif",
       "gradientColors": ["#22C55E", "#86EFAC"],
       "discount": "Get extra 10% cashback"
     },
@@ -53,7 +64,7 @@
       "category": "Maxxsaver",
       "title": "MAXXsaver",
       "subtitle": "Shop for ₹399 & unlock lowest prices!",
-      "imageUrl": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=200&h=150&fit=crop",
+      "imageUrl": "https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif",
       "gradientColors": ["#22C55E", "#86EFAC"],
       "discount": "Get extra 10% cashback"
     },
@@ -62,7 +73,7 @@
       "category": "Medicines",
       "title": "Prescription medicines",
       "subtitle": "in minutes",
-      "imageUrl": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=200&h=150&fit=crop",
+      "imageUrl": "https://media.giphy.com/media/l0HlTy9x8FZo0XO1i/giphy.gif",
       "gradientColors": ["#3B82F6", "#93C5FD"],
       "discount": "Search & add your medicines"
     },
@@ -71,7 +82,7 @@
       "category": "Monsoon",
       "title": "Rain Ready Store",
       "subtitle": "Rainy days made better",
-      "imageUrl": "https://images.unsplash.com/photo-1503435980610-a51f3ddfee50?w=200&h=150&fit=crop",
+      "imageUrl": "https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif",
       "gradientColors": ["#6366F1", "#A5B4FC"],
       "discount": "Get all the monsoon essentials"
     },
@@ -80,7 +91,7 @@
       "category": "Gadgets",
       "title": "GRAND GADGET SALE",
       "subtitle": "Smartphones, Earphones & more",
-      "imageUrl": "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=200&h=150&fit=crop",
+      "imageUrl": "https://media.giphy.com/media/xT9IgEYXnwvPJbdqGk/giphy.gif",
       "gradientColors": ["#8B5CF6", "#C4B5FD"],
       "discount": "UP TO 85% OFF"
     },
@@ -89,7 +100,7 @@
       "category": "Home",
       "title": "Home & Cleaning",
       "subtitle": "Everything for your home",
-      "imageUrl": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=200&h=150&fit=crop",
+      "imageUrl": "https://media.giphy.com/media/xT9IgHCTfp8CRshfQk/giphy.gif",
       "gradientColors": ["#EC4899", "#F9A8D4"],
       "discount": "UP TO 70% OFF"
     },
@@ -98,12 +109,29 @@
       "category": "Beauty",
       "title": "Personal & Baby Care SALE",
       "subtitle": "Skincare, Hair care & more",
-      "imageUrl": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=200&h=150&fit=crop",
+      "imageUrl": "https://media.giphy.com/media/xT9IgHMztEreGZJd1m/giphy.gif",
       "gradientColors": ["#F59E0B", "#FCD34D"],
       "discount": "Get flat ₹100 OFF"
+    },
+    {
+      "id": "8",
+      "category": "Baby",
+      "title": "Baby Care Essentials",
+      "subtitle": "Everything for your little one",
+      "imageUrl": "https://media.giphy.com/media/xT9IgFOWdFXJOYrKEw/giphy.gif",
+      "gradientColors": ["#F472B6", "#FBCFE8"],
+      "discount": "UP TO 50% OFF"
+    },
+    {
+      "id": "9",
+      "category": "Print",
+      "title": "Print & Stationery",
+      "subtitle": "Work from home essentials",
+      "imageUrl": "https://media.giphy.com/media/xT9IgK7FtdZbfD2Y5G/giphy.gif",
+      "gradientColors": ["#A855F7", "#C4B5FD"],
+      "discount": "Get flat ₹50 OFF"
     }
   ],
-
   "allCategoryData": {
     "sections": [
       {
@@ -145,30 +173,117 @@
         ]
       },
       {
-        "type": "grid",
-        "title": "SNACKS & DRINKS",
+        "type": "brands",
+        "title": "Shop by brands",
         "data": [
           {
-            "name": "Cold Drinks & Juices",
-            "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=150&h=150&fit=crop"
+            "name": "Amul",
+            "image": "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=150&h=150&fit=crop",
+            "discount": "UP TO 15% OFF"
           },
           {
-            "name": "Ice Creams & Desserts",
-            "image": "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=150&h=150&fit=crop"
+            "name": "Britannia",
+            "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=150&h=150&fit=crop",
+            "discount": "UP TO 20% OFF"
           },
           {
-            "name": "Chips & Crisps",
-            "image": "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=150&h=150&fit=crop"
+            "name": "Nestle",
+            "image": "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?w=150&h=150&fit=crop",
+            "discount": "UP TO 25% OFF"
           },
           {
-            "name": "Chocolates & Sweets",
-            "image": "https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=150&h=150&fit=crop"
+            "name": "Patanjali",
+            "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=150&h=150&fit=crop",
+            "discount": "UP TO 30% OFF"
+          },
+          {
+            "name": "Tata",
+            "image": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=150&h=150&fit=crop",
+            "discount": "UP TO 18% OFF"
+          },
+          {
+            "name": "ITC",
+            "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=150&h=150&fit=crop",
+            "discount": "UP TO 22% OFF"
+          }
+        ]
+      },
+      {
+        "type": "products",
+        "title": "Daily essentials",
+        "subtitle": "Fresh & quality assured",
+        "showSeeAll": true,
+        "data": [
+          {
+            "name": "Fresh Bananas",
+            "price": 48,
+            "originalPrice": 55,
+            "unit": "1 kg",
+            "discount": 13,
+            "rating": 4.2,
+            "reviews": 156,
+            "deliveryTime": "16 MINS",
+            "image": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Amul Fresh Milk",
+            "price": 27,
+            "originalPrice": 30,
+            "unit": "500 ml",
+            "discount": 10,
+            "rating": 4.5,
+            "reviews": 89,
+            "deliveryTime": "16 MINS",
+            "image": "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Brown Bread",
+            "price": 25,
+            "originalPrice": 28,
+            "unit": "400 g",
+            "discount": 11,
+            "rating": 4.3,
+            "reviews": 67,
+            "deliveryTime": "16 MINS",
+            "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Farm Fresh Eggs",
+            "price": 85,
+            "originalPrice": 95,
+            "unit": "12 pieces",
+            "discount": 11,
+            "rating": 4.4,
+            "reviews": 234,
+            "deliveryTime": "16 MINS",
+            "image": "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Onions",
+            "price": 32,
+            "originalPrice": 38,
+            "unit": "1 kg",
+            "discount": 16,
+            "rating": 4.1,
+            "reviews": 123,
+            "deliveryTime": "16 MINS",
+            "image": "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Tomatoes",
+            "price": 45,
+            "originalPrice": 52,
+            "unit": "1 kg",
+            "discount": 13,
+            "rating": 4.2,
+            "reviews": 198,
+            "deliveryTime": "16 MINS",
+            "image": "https://images.unsplash.com/photo-1546470427-227fda1b4d7d?w=150&h=150&fit=crop"
           }
         ]
       }
     ]
   },
-
   "maxxsaverData": {
     "sections": [
       {
@@ -187,10 +302,117 @@
             "badge": "60% OFF"
           }
         ]
+      },
+      {
+        "type": "grid",
+        "title": "GROCERY & KITCHEN",
+        "data": [
+          {
+            "name": "Fresh Vegetables",
+            "image": "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Fresh Fruits",
+            "image": "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Dairy, Bread and Eggs",
+            "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Cereals and Breakfast",
+            "image": "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Atta, Rice and Dal",
+            "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Oils and Ghee",
+            "image": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Masalas",
+            "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Dry Fruits and Seeds Mix",
+            "image": "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=150&h=150&fit=crop"
+          }
+        ]
+      },
+      {
+        "type": "brands",
+        "title": "Top tech brands",
+        "data": [
+          {
+            "name": "Apple",
+            "image": "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=150&h=150&fit=crop",
+            "discount": "UP TO 10% OFF"
+          },
+          {
+            "name": "Samsung",
+            "image": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=150&h=150&fit=crop",
+            "discount": "UP TO 25% OFF"
+          },
+          {
+            "name": "OnePlus",
+            "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=150&h=150&fit=crop",
+            "discount": "UP TO 20% OFF"
+          },
+          {
+            "name": "Xiaomi",
+            "image": "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=150&h=150&fit=crop",
+            "discount": "UP TO 30% OFF"
+          },
+          {
+            "name": "Sony",
+            "image": "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=150&h=150&fit=crop",
+            "discount": "UP TO 35% OFF"
+          }
+        ]
+      },
+      {
+        "type": "products",
+        "title": "Cure for cough & cold",
+        "showSeeAll": true,
+        "data": [
+          {
+            "name": "Nasoclear 0.65% Nasal Spray",
+            "price": 58,
+            "originalPrice": 64,
+            "discount": 9,
+            "deliveryTime": "16 MINS",
+            "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Dolo 650 Tablet",
+            "price": 28,
+            "originalPrice": 35,
+            "discount": 20,
+            "deliveryTime": "16 MINS",
+            "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Crocin Advance Tablet",
+            "price": 15,
+            "originalPrice": 18,
+            "discount": 17,
+            "deliveryTime": "16 MINS",
+            "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Vicks VapoRub",
+            "price": 85,
+            "originalPrice": 95,
+            "discount": 11,
+            "deliveryTime": "16 MINS",
+            "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=150&h=150&fit=crop"
+          }
+        ]
       }
     ]
   },
-
   "medicinesData": {
     "sections": [
       {
@@ -229,22 +451,6 @@
             "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=150&h=150&fit=crop"
           },
           {
-            "name": "Otrivin Oxy Fast Relief Adult Bottle Of 10ml Nasal Spray",
-            "price": 105,
-            "originalPrice": 117,
-            "discount": 10,
-            "deliveryTime": "16 MINS",
-            "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=150&h=150&fit=crop"
-          },
-          {
-            "name": "Montek Lc Strip Of 15 Tablets",
-            "price": 336,
-            "originalPrice": 373,
-            "discount": 9,
-            "deliveryTime": "16 MINS",
-            "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=150&h=150&fit=crop"
-          },
-          {
             "name": "Dolo 650 Tablet",
             "price": 28,
             "originalPrice": 35,
@@ -267,65 +473,11 @@
             "discount": 11,
             "deliveryTime": "16 MINS",
             "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=150&h=150&fit=crop"
-          },
-          {
-            "name": "Strepsils Honey Lemon",
-            "price": 22,
-            "originalPrice": 25,
-            "discount": 12,
-            "deliveryTime": "16 MINS",
-            "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=150&h=150&fit=crop"
-          },
-          {
-            "name": "Benadryl Cough Syrup",
-            "price": 65,
-            "originalPrice": 75,
-            "discount": 13,
-            "deliveryTime": "16 MINS",
-            "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=150&h=150&fit=crop"
-          }
-        ]
-      },
-      {
-        "type": "products",
-        "title": "Every fall, every lesson",
-        "subtitle": "Covered by Hansaplast",
-        "data": [
-          {
-            "name": "Hansaplast Washproof Bandages",
-            "price": 95,
-            "originalPrice": 110,
-            "discount": 14,
-            "rating": 4.5,
-            "reviews": 298,
-            "deliveryTime": "16 MINS",
-            "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=150&h=150&fit=crop"
-          },
-          {
-            "name": "Hansaplast Elastic Bandage",
-            "price": 125,
-            "originalPrice": 145,
-            "discount": 14,
-            "rating": 4.3,
-            "reviews": 156,
-            "deliveryTime": "16 MINS",
-            "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=150&h=150&fit=crop"
-          },
-          {
-            "name": "Hansaplast Fabric Strips",
-            "price": 85,
-            "originalPrice": 95,
-            "discount": 11,
-            "rating": 4.4,
-            "reviews": 234,
-            "deliveryTime": "16 MINS",
-            "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=150&h=150&fit=crop"
           }
         ]
       }
     ]
   },
-
   "monsoonData": {
     "sections": [
       {
@@ -383,31 +535,51 @@
             "reviews": 445,
             "deliveryTime": "16 MINS",
             "image": "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=150&h=150&fit=crop"
-          },
-          {
-            "name": "Yippee Noodles",
-            "price": 13,
-            "originalPrice": 16,
-            "discount": 19,
-            "rating": 4.0,
-            "reviews": 356,
-            "deliveryTime": "16 MINS",
-            "image": "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=150&h=150&fit=crop"
           }
         ]
       }
     ]
   },
-
   "gadgetsData": {
     "sections": [
+      {
+        "type": "brands",
+        "title": "Top tech brands",
+        "data": [
+          {
+            "name": "Apple",
+            "image": "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=150&h=150&fit=crop",
+            "discount": "UP TO 10% OFF"
+          },
+          {
+            "name": "Samsung",
+            "image": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=150&h=150&fit=crop",
+            "discount": "UP TO 25% OFF"
+          },
+          {
+            "name": "OnePlus",
+            "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=150&h=150&fit=crop",
+            "discount": "UP TO 20% OFF"
+          },
+          {
+            "name": "Xiaomi",
+            "image": "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=150&h=150&fit=crop",
+            "discount": "UP TO 30% OFF"
+          },
+          {
+            "name": "Sony",
+            "image": "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=150&h=150&fit=crop",
+            "discount": "UP TO 35% OFF"
+          }
+        ]
+      },
       {
         "type": "products",
         "title": "Price Crash on Noise!",
         "subtitle": "Only till 11 PM",
         "data": [
           {
-            "name": "Noise Twist Go Smartwatch, 1.3...",
+            "name": "Noise Twist Go Smartwatch",
             "price": 1699,
             "originalPrice": 4999,
             "discount": 66,
@@ -415,62 +587,6 @@
             "reviews": 26,
             "deliveryTime": "16 MINS",
             "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=150&h=150&fit=crop"
-          },
-          {
-            "name": "Noise Twist Round dial Smart Watch",
-            "price": 1399,
-            "originalPrice": 3499,
-            "discount": 72,
-            "rating": 3.9,
-            "reviews": 14,
-            "deliveryTime": "16 MINS",
-            "image": "https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?w=150&h=150&fit=crop"
-          },
-          {
-            "name": "Noise Icon 2 Elite Edition 1.8\" Display",
-            "price": 1599,
-            "originalPrice": 6999,
-            "discount": 77,
-            "rating": 3.9,
-            "reviews": 14,
-            "deliveryTime": "16 MINS",
-            "image": "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=150&h=150&fit=crop"
-          },
-          {
-            "name": "Noise Fit Twist Go Jet Black Smart",
-            "price": 1399,
-            "originalPrice": 3499,
-            "discount": 72,
-            "rating": 3.9,
-            "reviews": 11,
-            "deliveryTime": "16 MINS",
-            "image": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=150&h=150&fit=crop"
-          }
-        ]
-      },
-      {
-        "type": "products",
-        "title": "Trending near you",
-        "data": [
-          {
-            "name": "Nutripro Nutri Blender 500 Watts",
-            "price": 1599,
-            "originalPrice": 5000,
-            "discount": 68,
-            "rating": 4.2,
-            "reviews": 45,
-            "deliveryTime": "16 MINS",
-            "image": "https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=150&h=150&fit=crop"
-          },
-          {
-            "name": "Philips HD4928/01 Induction Cooktop",
-            "price": 3299,
-            "originalPrice": 5995,
-            "discount": 44,
-            "rating": 4.0,
-            "reviews": 23,
-            "deliveryTime": "16 MINS",
-            "image": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=150&h=150&fit=crop"
           },
           {
             "name": "Wireless Neckband Earphones",
@@ -506,7 +622,6 @@
       }
     ]
   },
-
   "homeData": {
     "sections": [
       {
@@ -530,10 +645,36 @@
             "image": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=150&h=150&fit=crop"
           }
         ]
+      },
+      {
+        "type": "products",
+        "title": "Home essentials",
+        "subtitle": "Everything for your home",
+        "data": [
+          {
+            "name": "Vim Dishwash Gel 750ml",
+            "price": 85,
+            "originalPrice": 95,
+            "discount": 11,
+            "rating": 4.2,
+            "reviews": 156,
+            "deliveryTime": "16 MINS",
+            "image": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Surf Excel Detergent 1kg",
+            "price": 145,
+            "originalPrice": 165,
+            "discount": 12,
+            "rating": 4.4,
+            "reviews": 298,
+            "deliveryTime": "16 MINS",
+            "image": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=150&h=150&fit=crop"
+          }
+        ]
       }
     ]
   },
-
   "beautyData": {
     "sections": [
       {
@@ -555,80 +696,163 @@
           {
             "name": "Makeup",
             "image": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=150&h=150&fit=crop"
+          }
+        ]
+      },
+      {
+        "type": "brands",
+        "title": "Beauty brands",
+        "data": [
+          {
+            "name": "Lakme",
+            "image": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=150&h=150&fit=crop",
+            "discount": "UP TO 40% OFF"
           },
           {
-            "name": "Oral Care",
-            "image": "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?w=150&h=150&fit=crop"
+            "name": "L'Oreal",
+            "image": "https://images.unsplash.com/photo-1526045478516-99145907023c?w=150&h=150&fit=crop",
+            "discount": "UP TO 35% OFF"
           },
           {
-            "name": "Grooming",
-            "image": "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=150&h=150&fit=crop"
+            "name": "Nivea",
+            "image": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=150&h=150&fit=crop",
+            "discount": "UP TO 25% OFF"
+          }
+        ]
+      },
+      {
+        "type": "products",
+        "title": "Skincare essentials",
+        "subtitle": "For healthy glowing skin",
+        "data": [
+          {
+            "name": "Cetaphil Gentle Skin Cleanser",
+            "price": 425,
+            "originalPrice": 485,
+            "discount": 12,
+            "rating": 4.5,
+            "reviews": 567,
+            "deliveryTime": "16 MINS",
+            "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=150&h=150&fit=crop"
           },
           {
-            "name": "Baby Care",
-            "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=150&h=150&fit=crop"
-          },
-          {
-            "name": "Fragrances",
-            "image": "https://images.unsplash.com/photo-1541643600914-78b084683601?w=150&h=150&fit=crop"
+            "name": "Himalaya Purifying Neem Face Wash",
+            "price": 85,
+            "originalPrice": 95,
+            "discount": 11,
+            "rating": 4.2,
+            "reviews": 234,
+            "deliveryTime": "16 MINS",
+            "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=150&h=150&fit=crop"
           }
         ]
       }
     ]
   },
-
-  "products": [
-    {
-      "id": "1",
-      "name": "Fresh Bananas",
-      "price": 48,
-      "originalPrice": 55,
-      "unit": "1 kg",
-      "imageUrl": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=200&h=200&fit=crop",
-      "discount": 13,
-      "deliveryTime": "16 MINS",
-      "category": "Fruits",
-      "rating": 4.2,
-      "reviews": 156
-    },
-    {
-      "id": "2",
-      "name": "Amul Fresh Milk",
-      "price": 27,
-      "originalPrice": 30,
-      "unit": "500 ml",
-      "imageUrl": "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=200&h=200&fit=crop",
-      "discount": 10,
-      "deliveryTime": "16 MINS",
-      "category": "Dairy",
-      "rating": 4.5,
-      "reviews": 89
-    },
-    {
-      "id": "3",
-      "name": "Brown Bread",
-      "price": 25,
-      "originalPrice": 28,
-      "unit": "400 g",
-      "imageUrl": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=200&h=200&fit=crop",
-      "discount": 11,
-      "deliveryTime": "16 MINS",
-      "category": "Bakery",
-      "rating": 4.3,
-      "reviews": 67
-    },
-    {
-      "id": "4",
-      "name": "Coca Cola",
-      "price": 40,
-      "originalPrice": 45,
-      "unit": "750 ml",
-      "imageUrl": "https://images.unsplash.com/photo-1629203851122-3726ecdf080e?w=200&h=200&fit=crop",
-      "discount": 11,
-      "deliveryTime": "16 MINS",
-      "category": "Beverages",
-      "rating": 4.4,
-      "reviews": 234
-    }
-  ]
+  "babyData": {
+    "sections": [
+      {
+        "type": "grid",
+        "title": "BABY CARE ESSENTIALS",
+        "data": [
+          {
+            "name": "Baby Food & Formula",
+            "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Diapers & Wipes",
+            "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Baby Bath & Skin",
+            "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Toys & Games",
+            "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=150&h=150&fit=crop"
+          }
+        ]
+      },
+      {
+        "type": "products",
+        "title": "Baby care essentials",
+        "subtitle": "Gentle care for your little one",
+        "data": [
+          {
+            "name": "Pampers Baby Dry Diapers S",
+            "price": 285,
+            "originalPrice": 325,
+            "discount": 12,
+            "rating": 4.4,
+            "reviews": 567,
+            "deliveryTime": "16 MINS",
+            "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Johnson's Baby Shampoo 200ml",
+            "price": 145,
+            "originalPrice": 165,
+            "discount": 12,
+            "rating": 4.5,
+            "reviews": 445,
+            "deliveryTime": "16 MINS",
+            "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=150&h=150&fit=crop"
+          }
+        ]
+      }
+    ]
+  },
+  "printData": {
+    "sections": [
+      {
+        "type": "grid",
+        "title": "PRINT & STATIONERY",
+        "data": [
+          {
+            "name": "Print Services",
+            "image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Office Supplies",
+            "image": "https://images.unsplash.com/photo-1497386539812-44b90cba54b5?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Books & Notebooks",
+            "image": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Art & Craft",
+            "image": "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=150&h=150&fit=crop"
+          }
+        ]
+      },
+      {
+        "type": "products",
+        "title": "Work from home essentials",
+        "subtitle": "Stay productive at home",
+        "data": [
+          {
+            "name": "A4 Copy Paper Ream 500 sheets",
+            "price": 285,
+            "originalPrice": 325,
+            "discount": 12,
+            "rating": 4.2,
+            "reviews": 123,
+            "deliveryTime": "16 MINS",
+            "image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=150&h=150&fit=crop"
+          },
+          {
+            "name": "Parker Jotter Blue Pen",
+            "price": 145,
+            "originalPrice": 165,
+            "discount": 12,
+            "rating": 4.4,
+            "reviews": 89,
+            "deliveryTime": "16 MINS",
+            "image": "https://images.unsplash.com/photo-1497386539812-44b90cba54b5?w=150&h=150&fit=crop"
+          }
+        ]
+      }
+    ]
+  }
 }

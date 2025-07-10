@@ -1,4 +1,4 @@
-// app/(tabs)/index.tsx - Fixed Real Blinkit UI
+// app/(tabs)/index.tsx - Complete Enhanced Blinkit UI
 import { SquircleView } from "@/components/ui/SquircleView";
 import { Category } from "@/types";
 import { LinearGradient } from "expo-linear-gradient";
@@ -7,8 +7,6 @@ import {
   Dimensions,
   FlatList,
   Image,
-  Platform,
-  SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
@@ -74,6 +72,16 @@ export default function HomeScreen() {
         gradient: ["#F59E0B", "#FCD34D"],
         background: "#FFFBEB",
       },
+      Baby: {
+        primary: "#F472B6",
+        gradient: ["#F472B6", "#FBCFE8"],
+        background: "#FDF2F8",
+      },
+      Print: {
+        primary: "#A855F7",
+        gradient: ["#A855F7", "#C4B5FD"],
+        background: "#F5F3FF",
+      },
     };
 
     const theme = themes[category.name as keyof typeof themes] || themes["All"];
@@ -134,6 +142,8 @@ export default function HomeScreen() {
       Gadgets: homepageData.gadgetsData,
       Home: homepageData.homeData,
       Beauty: homepageData.beautyData,
+      Baby: homepageData.babyData,
+      Print: homepageData.printData,
     };
     return (
       categoryMap[selectedCategory as keyof typeof categoryMap] ||
@@ -141,39 +151,24 @@ export default function HomeScreen() {
     );
   };
 
-  // Grid items for category pages (like GROCERY & KITCHEN)
-  const renderGridItem = ({ item }: { item: any }) => (
-    <TouchableOpacity style={styles.gridItem} activeOpacity={0.9}>
-      <View style={styles.gridImageContainer}>
-        <Image source={{ uri: item.image }} style={styles.gridImage} />
+  // Brand cards for horizontal scroll
+  const renderBrandCard = ({ item }: { item: any }) => (
+    <TouchableOpacity style={styles.brandCard} activeOpacity={0.9}>
+      <View style={styles.brandImageContainer}>
+        <Image source={{ uri: item.image }} style={styles.brandImage} />
       </View>
-      <Text style={styles.gridItemName} numberOfLines={2}>
+      <Text style={styles.brandName} numberOfLines={1}>
         {item.name}
       </Text>
+      {item.discount && (
+        <Text style={[styles.brandDiscount, { color: currentTheme.primary }]}>
+          {item.discount}
+        </Text>
+      )}
     </TouchableOpacity>
   );
 
-  // Offer cards (2x2 grid)
-  const renderOfferCard = ({ item }: { item: any }) => (
-    <TouchableOpacity style={styles.offerCard} activeOpacity={0.9}>
-      <Image source={{ uri: item.imageUrl }} style={styles.offerImage} />
-      <View style={styles.offerContent}>
-        <Text style={styles.offerTitle} numberOfLines={1}>
-          {item.title}
-        </Text>
-        <Text style={styles.offerSubtitle} numberOfLines={1}>
-          {item.subtitle}
-        </Text>
-        <View
-          style={[styles.offerBadge, { backgroundColor: currentTheme.primary }]}
-        >
-          <Text style={styles.offerBadgeText}>{item.badge}</Text>
-        </View>
-      </View>
-    </TouchableOpacity>
-  );
-
-  // Product cards for horizontal scroll - FIXED SIZE TO SHOW 4 PRODUCTS
+  // Product cards for horizontal scroll - Shows 4+ products with cut-off
   const renderProductCard = ({ item }: { item: any }) => (
     <TouchableOpacity style={styles.productCard} activeOpacity={0.9}>
       <View style={styles.productImageContainer}>
@@ -247,74 +242,73 @@ export default function HomeScreen() {
     }
     return pairs;
   };
-
-  const renderOfferPair = ({ item }: { item: any }) => (
-    <View style={styles.offerRow}>
-      <TouchableOpacity style={styles.offerCard} activeOpacity={0.9}>
-        <Image source={{ uri: item.left.imageUrl }} style={styles.offerImage} />
-        <View style={styles.offerContent}>
-          <Text style={styles.offerTitle} numberOfLines={1}>
-            {item.left.title}
-          </Text>
-          <Text style={styles.offerSubtitle} numberOfLines={1}>
-            {item.left.subtitle}
-          </Text>
-          <View
-            style={[
-              styles.offerBadge,
-              { backgroundColor: currentTheme.primary },
-            ]}
-          >
-            <Text style={styles.offerBadgeText}>{item.left.badge}</Text>
-          </View>
+  // Clean offer card renderer
+  const renderOfferCard = ({ item }: { item: any }) => (
+    <TouchableOpacity style={styles.offerCard} activeOpacity={0.9}>
+      <View style={styles.offerImageContainer}>
+        <Image source={{ uri: item.imageUrl }} style={styles.offerImage} />
+        <View
+          style={[styles.offerBadge, { backgroundColor: currentTheme.primary }]}
+        >
+          <Text style={styles.offerBadgeText}>{item.badge}</Text>
         </View>
-      </TouchableOpacity>
-
-      {item.right && (
-        <TouchableOpacity style={styles.offerCard} activeOpacity={0.9}>
-          <Image
-            source={{ uri: item.right.imageUrl }}
-            style={styles.offerImage}
-          />
-          <View style={styles.offerContent}>
-            <Text style={styles.offerTitle} numberOfLines={1}>
-              {item.right.title}
-            </Text>
-            <Text style={styles.offerSubtitle} numberOfLines={1}>
-              {item.right.subtitle}
-            </Text>
-            <View
-              style={[
-                styles.offerBadge,
-                { backgroundColor: currentTheme.primary },
-              ]}
-            >
-              <Text style={styles.offerBadgeText}>{item.right.badge}</Text>
-            </View>
-          </View>
-        </TouchableOpacity>
-      )}
-    </View>
+      </View>
+      <View style={styles.offerContent}>
+        <Text style={styles.offerTitle} numberOfLines={1}>
+          {item.title}
+        </Text>
+        <Text style={styles.offerSubtitle} numberOfLines={1}>
+          {item.subtitle}
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
 
   // Render different section types
   const renderSection = (section: any, index: number) => {
     if (section.type === "grid") {
-      // Category grid (like GROCERY & KITCHEN)
+      // Category grid (like GROCERY & KITCHEN) - FIXED: Shows 4 items per row
       return (
         <View key={index} style={styles.section}>
           <Text style={styles.sectionTitle}>{section.title}</Text>
           <View style={styles.gridContainer}>
             {section.data.map((item: any, idx: number) => (
               <View key={idx} style={styles.gridItemWrapper}>
-                {renderGridItem({ item })}
+                <TouchableOpacity style={styles.gridItem} activeOpacity={0.9}>
+                  <View style={styles.gridImageContainer}>
+                    <Image
+                      source={{ uri: item.image }}
+                      style={styles.gridImage}
+                    />
+                  </View>
+                  <Text style={styles.gridItemName} numberOfLines={2}>
+                    {item.name}
+                  </Text>
+                </TouchableOpacity>
               </View>
             ))}
           </View>
         </View>
       );
+    } else if (section.type === "brands") {
+      // Brand horizontal scroll
+      return (
+        <View key={index} style={styles.section}>
+          <Text style={styles.sectionTitle}>{section.title}</Text>
+          <FlatList
+            data={section.data}
+            renderItem={renderBrandCard}
+            keyExtractor={(item, idx) => `brand-${idx}`}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.brandsList}
+            snapToInterval={(width - 44) / 5.5 + 6}
+            decelerationRate="fast"
+          />
+        </View>
+      );
     } else if (section.type === "offers") {
-      // Offer cards (2x2 grid) - Fixed for numColumns error
+      // Offer cards (2x2 grid) - Using renderOfferCard
       const offerPairs = createOfferPairs(section.data || []);
       return (
         <View key={index} style={styles.section}>
@@ -322,7 +316,12 @@ export default function HomeScreen() {
             <Text style={styles.sectionTitle}>{section.title}</Text>
           )}
           <View style={styles.offersContainer}>
-            {offerPairs.map((pair) => renderOfferPair({ item: pair }))}
+            {offerPairs.map((pair, pairIndex) => (
+              <View key={pairIndex} style={styles.offerRow}>
+                {renderOfferCard({ item: pair.left })}
+                {pair.right && renderOfferCard({ item: pair.right })}
+              </View>
+            ))}
           </View>
         </View>
       );
@@ -352,6 +351,8 @@ export default function HomeScreen() {
             horizontal
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.productsList}
+            snapToInterval={(width - 44) / 4.3 + 6}
+            decelerationRate="fast"
           />
         </View>
       );
@@ -360,124 +361,149 @@ export default function HomeScreen() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={{ flex: 1, backgroundColor: currentTheme.primary }}>
       <StatusBar
         backgroundColor={currentTheme.primary}
         barStyle="light-content"
       />
 
-      {/* Header - EXACT Blinkit style */}
-      <LinearGradient colors={currentTheme.gradient} style={styles.header}>
-        <View style={styles.headerContent}>
-          <View style={styles.deliveryInfo}>
-            <Text style={styles.deliveryTime}>16 MINS</Text>
-            <Text style={styles.deliveryLocation}>Home</Text>
+      <View style={{ flex: 1, backgroundColor: currentTheme.background }}>
+        {/* Header - EXACT Blinkit style */}
+        <LinearGradient colors={currentTheme.gradient} style={styles.header}>
+          <View style={styles.headerContent}>
+            <View style={styles.deliveryInfo}>
+              <Text style={styles.deliveryTime}>16 MINS</Text>
+              <Text style={styles.deliveryLocation}>Home</Text>
+            </View>
+            <View style={styles.locationContainer}>
+              <Text style={styles.location} numberOfLines={1}>
+                FF21, Ground floor, Silver Springs Layout, Munnekolal, B...
+              </Text>
+            </View>
+            <TouchableOpacity style={styles.profileButton}>
+              <Text style={styles.profileIcon}>👤</Text>
+            </TouchableOpacity>
           </View>
-          <View style={styles.locationContainer}>
-            <Text style={styles.location} numberOfLines={1}>
-              FF21, Ground floor, Silver Springs Layout, Munnekolal, B...
+        </LinearGradient>
+
+        {/* Search Bar */}
+        <View
+          style={[
+            styles.searchContainer,
+            { backgroundColor: currentTheme.background },
+          ]}
+        >
+          <TouchableOpacity style={styles.searchBar}>
+            <Text style={styles.searchIcon}>🔍</Text>
+            <Text style={styles.searchText}>
+              Search for '
+              {selectedCategory === "All"
+                ? "Umbrella"
+                : selectedCategory === "Medicines"
+                ? "Rain coat"
+                : selectedCategory === "Beauty"
+                ? "Repellents"
+                : selectedCategory === "Gadgets"
+                ? "Tissue"
+                : "Bread"}
+              '
             </Text>
-          </View>
-          <TouchableOpacity style={styles.profileButton}>
-            <Text style={styles.profileIcon}>👤</Text>
+            <Text style={styles.micIcon}>🎤</Text>
           </TouchableOpacity>
         </View>
-      </LinearGradient>
 
-      {/* Search Bar */}
-      <View style={styles.searchContainer}>
-        <TouchableOpacity style={styles.searchBar}>
-          <Text style={styles.searchIcon}>🔍</Text>
-          <Text style={styles.searchText}>
-            Search for '
-            {selectedCategory === "All"
-              ? "Umbrella"
-              : selectedCategory === "Medicines"
-              ? "Rain coat"
-              : selectedCategory === "Beauty"
-              ? "Repellents"
-              : selectedCategory === "Gadgets"
-              ? "Tissue"
-              : "Bread"}
-            '
-          </Text>
-          <Text style={styles.micIcon}>🎤</Text>
-        </TouchableOpacity>
-      </View>
-
-      {/* Categories */}
-      <View style={styles.categoriesContainer}>
-        <FlatList
-          data={[
-            {
-              id: "0",
-              name: "All",
-              imageUrl:
-                "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=100&h=100&fit=crop",
-              backgroundColor: "#F97316",
-            },
-            ...homepageData.categories,
+        {/* Categories - Now shows 4+ with partial visibility */}
+        <View
+          style={[
+            styles.categoriesContainer,
+            { backgroundColor: currentTheme.background },
           ]}
-          renderItem={renderCategory}
-          keyExtractor={(item) => item.id}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.categoriesList}
-        />
-      </View>
+        >
+          <FlatList
+            data={[
+              {
+                id: "0",
+                name: "All",
+                imageUrl:
+                  "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=100&h=100&fit=crop",
+                backgroundColor: "#F97316",
+              },
+              ...homepageData.categories,
+            ]}
+            renderItem={renderCategory}
+            keyExtractor={(item) => item.id}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.categoriesList}
+            snapToInterval={width / 4.2}
+            decelerationRate="fast"
+          />
+        </View>
 
-      {/* Main Content */}
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        style={styles.scrollView}
-        removeClippedSubviews={true}
-        maxToRenderPerBatch={15}
-        windowSize={10}
-      >
-        {/* Dynamic Banner */}
-        <View style={styles.bannerContainer}>
-          <LinearGradient
-            colors={getCurrentBanner().gradientColors}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
-            style={styles.categoryBanner}
-          >
-            <View style={styles.bannerContent}>
-              <Text style={styles.bannerTitle}>{getCurrentBanner().title}</Text>
-              <Text style={styles.bannerSubtitle}>
-                {getCurrentBanner().subtitle}
-              </Text>
-              {getCurrentBanner().discount && (
-                <View style={styles.bannerDiscountBadge}>
-                  <Text style={styles.bannerDiscountText}>
-                    {getCurrentBanner().discount}
-                  </Text>
+        {/* Main Content */}
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={[
+            styles.scrollView,
+            { backgroundColor: currentTheme.background },
+          ]}
+          removeClippedSubviews={true}
+          maxToRenderPerBatch={15}
+          windowSize={10}
+        >
+          {/* Dynamic Banner with GIF effect */}
+          <View style={styles.bannerContainer}>
+            <LinearGradient
+              colors={getCurrentBanner().gradientColors}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={styles.categoryBanner}
+            >
+              <View style={styles.bannerContent}>
+                <Text style={styles.bannerTitle}>
+                  {getCurrentBanner().title}
+                </Text>
+                <Text style={styles.bannerSubtitle}>
+                  {getCurrentBanner().subtitle}
+                </Text>
+                {getCurrentBanner().discount && (
+                  <View style={styles.bannerDiscountBadge}>
+                    <Text style={styles.bannerDiscountText}>
+                      {getCurrentBanner().discount}
+                    </Text>
+                  </View>
+                )}
+              </View>
+              <View style={styles.bannerImageContainer}>
+                <Image
+                  source={{ uri: getCurrentBanner().imageUrl }}
+                  style={styles.bannerImage}
+                />
+                {/* GIF Overlay Effect */}
+                <View style={styles.bannerGifOverlay}>
+                  <Text style={styles.bannerGifText}>✨</Text>
                 </View>
-              )}
-            </View>
-            <Image
-              source={{ uri: getCurrentBanner().imageUrl }}
-              style={styles.bannerImage}
-            />
-          </LinearGradient>
-        </View>
+              </View>
+            </LinearGradient>
+          </View>
 
-        {/* Dynamic Content Based on Category */}
-        {getCurrentData()?.sections?.map((section: any, index: number) =>
-          renderSection(section, index)
-        )}
+          {/* Dynamic Content Based on Category */}
+          {getCurrentData()?.sections?.map((section: any, index: number) =>
+            renderSection(section, index)
+          )}
 
-        {/* Free Delivery Banner */}
-        <View style={styles.freeDeliveryBanner}>
-          <Text style={styles.deliveryIcon}>🛵</Text>
-          <Text style={styles.freeDeliveryText}>
-            FREE DELIVERY on orders above ₹99
-          </Text>
-        </View>
+          {/* Free Delivery Banner */}
+          <View style={styles.freeDeliveryBanner}>
+            <Text style={styles.deliveryIcon}>🛵</Text>
+            <Text style={styles.freeDeliveryText}>
+              FREE DELIVERY on orders above ₹99
+            </Text>
+          </View>
 
-        <View style={styles.bottomPadding} />
-      </ScrollView>
-    </SafeAreaView>
+          <View style={styles.bottomPadding} />
+        </ScrollView>
+      </View>
+    </View>
   );
 }
 
@@ -487,7 +513,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
   },
   header: {
-    paddingTop: Platform.OS === "ios" ? 10 : 8,
+    paddingTop: 60,
     paddingBottom: 14,
     paddingHorizontal: 16,
   },
@@ -534,35 +560,41 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     fontSize: 14,
   },
+  // Update search bar styles:
   searchContainer: {
     paddingHorizontal: 16,
-    marginTop: -6,
-    marginBottom: 8,
+    marginTop: 15,
+    marginBottom: 12, // Increased spacing
+    backgroundColor: "transparent",
   },
   searchBar: {
     backgroundColor: "#FFFFFF",
-    borderRadius: 8,
-    paddingHorizontal: 12,
-    paddingVertical: 10,
+    borderRadius: 12, // More rounded
+    paddingHorizontal: 16, // More padding
+    paddingVertical: 14, // Much bigger height
     flexDirection: "row",
     alignItems: "center",
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.06,
-    shadowRadius: 4,
-    elevation: 2,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 6,
+    elevation: 3,
+    minHeight: 48, // Ensure minimum height
   },
   searchIcon: {
-    fontSize: 13,
-    marginRight: 8,
+    fontSize: 16, // Bigger icon
+    marginRight: 12,
+    color: "#6B7280",
   },
   searchText: {
     flex: 1,
     color: "#9CA3AF",
-    fontSize: 12,
+    fontSize: 14, // Bigger text
+    fontWeight: "400",
   },
   micIcon: {
-    fontSize: 13,
+    fontSize: 16, // Bigger icon
+    color: "#6B7280",
   },
   categoriesContainer: {
     backgroundColor: "#FFFFFF",
@@ -632,10 +664,27 @@ const styles = StyleSheet.create({
     fontSize: 9,
     fontWeight: "600",
   },
+  bannerImageContainer: {
+    position: "relative",
+  },
   bannerImage: {
     width: 80,
     height: 60,
     borderRadius: 8,
+  },
+  bannerGifOverlay: {
+    position: "absolute",
+    top: 4,
+    right: 4,
+    backgroundColor: "rgba(255,255,255,0.2)",
+    borderRadius: 12,
+    width: 20,
+    height: 20,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  bannerGifText: {
+    fontSize: 10,
   },
   section: {
     marginBottom: 14,
@@ -673,8 +722,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   gridItemWrapper: {
-    width: "48%",
-    marginBottom: 10,
+    width: "25%", // Changed from whatever you had
+    marginBottom: 12,
   },
   gridItem: {
     backgroundColor: "#F9FAFB",
@@ -699,7 +748,43 @@ const styles = StyleSheet.create({
     textAlign: "center",
     lineHeight: 12,
   },
+  // Brand Cards - Show 5+ brands with partial visibility
+  brandsList: {
+    paddingLeft: 12,
+    paddingRight: 12,
+  },
+  brandCard: {
+    alignItems: "center",
+    marginRight: 8,
+    width: (width - 44) / 4.5, // Shows 5+ brands with cut-off
+  },
+  brandImageContainer: {
+    width: "100%",
+    aspectRatio: 1,
+    backgroundColor: "#F9FAFB",
+    borderRadius: 8,
+    padding: 8,
+    marginBottom: 4,
+  },
+  brandImage: {
+    width: "100%",
+    height: "100%",
+    borderRadius: 6,
+  },
+  brandName: {
+    fontSize: 8,
+    fontWeight: "500",
+    color: "#374151",
+    textAlign: "center",
+    marginBottom: 1,
+  },
+  brandDiscount: {
+    fontSize: 7,
+    fontWeight: "600",
+    textAlign: "center",
+  },
   // Offer Cards - Fixed layout
+  // Offer Cards - Clean banner-like design
   offersContainer: {
     paddingHorizontal: 16,
   },
@@ -719,44 +804,51 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 2,
   },
+  offerImageContainer: {
+    position: "relative",
+  },
   offerImage: {
     width: "100%",
-    height: 100,
-  },
-  offerContent: {
-    padding: 8,
-  },
-  offerTitle: {
-    fontSize: 12,
-    fontWeight: "600",
-    color: "#1F2937",
-    marginBottom: 1,
-  },
-  offerSubtitle: {
-    fontSize: 10,
-    color: "#6B7280",
-    marginBottom: 6,
+    height: 80,
+    resizeMode: "cover",
   },
   offerBadge: {
+    position: "absolute",
+    top: 6,
+    right: 6,
     paddingHorizontal: 6,
     paddingVertical: 2,
     borderRadius: 4,
-    alignSelf: "flex-start",
   },
   offerBadgeText: {
     color: "#FFFFFF",
     fontSize: 8,
     fontWeight: "700",
   },
-  // Product Cards (Horizontal scroll) - FIXED TO SHOW 4 PRODUCTS
+  offerContent: {
+    padding: 8,
+  },
+  offerTitle: {
+    fontSize: 11,
+    fontWeight: "600",
+    color: "#1F2937",
+    marginBottom: 2,
+  },
+  offerSubtitle: {
+    fontSize: 9,
+    color: "#6B7280",
+  },
+
+  // Product Cards (Horizontal scroll) - Shows 4+ with 10% cut-off
   productsList: {
-    paddingLeft: 16,
+    paddingLeft: 12,
+    paddingRight: 8,
   },
   productCard: {
     backgroundColor: "#FFFFFF",
     borderRadius: 8,
-    marginRight: 8,
-    width: (width - 48) / 4.2, // Shows exactly 4 products + spacing
+    marginRight: 6,
+    width: (width - 44) / 3.5, // Shows exactly 4 products with 10% cut-off
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.04,
