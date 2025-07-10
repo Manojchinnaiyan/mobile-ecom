@@ -24,3 +24,20 @@ export interface Banner {
   imageUrl: string;
   backgroundColor: string;
 }
+
+export interface CategoryBanner {
+  id: string;
+  category: string;
+  title: string;
+  subtitle: string;
+  imageUrl: string;
+  gradientColors: string[];
+  discount?: string;
+}
+
+export interface OfferCard {
+  title: string;
+  subtitle: string;
+  imageUrl: string;
+  badge: string;
+}
