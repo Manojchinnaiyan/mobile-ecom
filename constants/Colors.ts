@@ -1,26 +1,33 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
+import { BlinkitColors } from "./BlinkitDesign";
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+const tintColorLight = BlinkitColors.primary;
+const tintColorDark = BlinkitColors.primary;
 
 export const Colors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
+    text: BlinkitColors.text,
+    background: BlinkitColors.background,
     tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
+    icon: BlinkitColors.textSecondary,
+    tabIconDefault: BlinkitColors.textSecondary,
     tabIconSelected: tintColorLight,
+    surface: BlinkitColors.surface,
+    border: BlinkitColors.border,
+    primary: BlinkitColors.primary,
+    success: BlinkitColors.success,
+    error: BlinkitColors.error,
   },
   dark: {
-    text: '#ECEDEE',
-    background: '#151718',
+    text: "#ECEDEE",
+    background: "#151718",
     tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
+    icon: "#9BA1A6",
+    tabIconDefault: "#9BA1A6",
     tabIconSelected: tintColorDark,
+    surface: "#262626",
+    border: "#404040",
+    primary: BlinkitColors.primary,
+    success: BlinkitColors.success,
+    error: BlinkitColors.error,
   },
 };

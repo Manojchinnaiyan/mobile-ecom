@@ -1,75 +1,204 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { ProductCard } from "@/components/product/ProductCard";
+import { SquircleView } from "@/components/ui/SquircleView";
+import { BlinkitColors, BlinkitSpacing } from "@/constants/BlinkitDesign";
+import { Category, Product } from "@/types";
+import React from "react";
+import {
+  FlatList,
+  Image,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+// Import your JSON data
+import homepageData from "@/assets/data/homepage.json";
 
 export default function HomeScreen() {
+  const handleAddToCart = (product: Product) => {
+    console.log("Added to cart:", product.name);
+    // Implement cart functionality
+  };
+
+  const renderCategory = ({ item }: { item: Category }) => (
+    <TouchableOpacity style={styles.categoryItem}>
+      <SquircleView size={60} backgroundColor={item.backgroundColor}>
+        <Image source={{ uri: item.imageUrl }} style={styles.categoryImage} />
+      </SquircleView>
+      <Text style={styles.categoryName}>{item.name}</Text>
+    </TouchableOpacity>
+  );
+
+  const renderProduct = ({ item }: { item: Product }) => (
+    <View style={styles.productItem}>
+      <ProductCard product={item} onAddToCart={handleAddToCart} />
+    </View>
+  );
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <SafeAreaView style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {/* Header */}
+        <View style={styles.header}>
+          <Text style={styles.deliveryLocation}>Delivery in 10 minutes</Text>
+          <Text style={styles.location}>Bengaluru, Karnataka</Text>
+        </View>
+
+        {/* Search Bar */}
+        <TouchableOpacity style={styles.searchBar}>
+          <Text style={styles.searchText}>Search milk</Text>
+        </TouchableOpacity>
+
+        {/* Banner */}
+        <View style={styles.bannerContainer}>
+          <View
+            style={[
+              styles.banner,
+              { backgroundColor: homepageData.banners[0].backgroundColor },
+            ]}
+          >
+            <View style={styles.bannerContent}>
+              <Text style={styles.bannerTitle}>
+                {homepageData.banners[0].title}
+              </Text>
+              <Text style={styles.bannerSubtitle}>
+                {homepageData.banners[0].subtitle}
+              </Text>
+            </View>
+            <Image
+              source={{ uri: homepageData.banners[0].imageUrl }}
+              style={styles.bannerImage}
+            />
+          </View>
+        </View>
+
+        {/* Categories */}
+        <View style={styles.section}>
+          <FlatList
+            data={homepageData.categories}
+            renderItem={renderCategory}
+            keyExtractor={(item) => item.id}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.categoriesList}
+          />
+        </View>
+
+        {/* Products */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Bestsellers</Text>
+          <FlatList
+            data={homepageData.products}
+            renderItem={renderProduct}
+            keyExtractor={(item) => item.id}
+            numColumns={2}
+            columnWrapperStyle={styles.productRow}
+            scrollEnabled={false}
+          />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: {
+    flex: 1,
+    backgroundColor: BlinkitColors.background,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  header: {
+    padding: BlinkitSpacing.lg,
+    backgroundColor: BlinkitColors.primary,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  deliveryLocation: {
+    color: "#FFFFFF",
+    fontSize: 12,
+    fontWeight: "500",
+  },
+  location: {
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontWeight: "700",
+  },
+  searchBar: {
+    margin: BlinkitSpacing.lg,
+    padding: BlinkitSpacing.md,
+    backgroundColor: BlinkitColors.surface,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: BlinkitColors.border,
+  },
+  searchText: {
+    color: BlinkitColors.textSecondary,
+    fontSize: 14,
+  },
+  bannerContainer: {
+    marginHorizontal: BlinkitSpacing.lg,
+    marginBottom: BlinkitSpacing.lg,
+  },
+  banner: {
+    borderRadius: 12,
+    padding: BlinkitSpacing.lg,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  bannerContent: {
+    flex: 1,
+  },
+  bannerTitle: {
+    color: "#FFFFFF",
+    fontSize: 18,
+    fontWeight: "700",
+    marginBottom: 4,
+  },
+  bannerSubtitle: {
+    color: "#FFFFFF",
+    fontSize: 14,
+    opacity: 0.9,
+  },
+  bannerImage: {
+    width: 80,
+    height: 60,
+    borderRadius: 8,
+  },
+  section: {
+    marginBottom: BlinkitSpacing.lg,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: BlinkitColors.text,
+    marginHorizontal: BlinkitSpacing.lg,
+    marginBottom: BlinkitSpacing.sm,
+  },
+  categoriesList: {
+    paddingHorizontal: BlinkitSpacing.lg,
+  },
+  categoryItem: {
+    alignItems: "center",
+    marginRight: BlinkitSpacing.lg,
+    width: 80,
+  },
+  categoryImage: {
+    width: "100%",
+    height: "100%",
+    borderRadius: 20,
+  },
+  categoryName: {
+    fontSize: 12,
+    fontWeight: "500",
+    color: BlinkitColors.text,
+    textAlign: "center",
+    marginTop: BlinkitSpacing.xs,
+  },
+  productRow: {
+    justifyContent: "space-between",
+    paddingHorizontal: BlinkitSpacing.lg,
+  },
+  productItem: {
+    flex: 0.48,
   },
 });
